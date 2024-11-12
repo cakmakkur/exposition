@@ -1,0 +1,22 @@
+.section_5 {
+  height: 130vh;
+  width: 100%;
+  position: relative;
+  // background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & img {
+    height: 80vh;
+    z-index: 20;
+  }
+}
+
+.section_5__canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+}

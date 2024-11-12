@@ -1,0 +1,94 @@
+.section_1 {
+  padding: 4vh 5vw 0vh;
+  height: 100vh;
+  position: relative;
+
+  &__child_1 {
+    width: 100%;
+    height: 100px;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 15px;
+
+    & h1 {
+      color: white;
+    }
+  }
+
+  &__child_2 {
+    border: 5px solid white;
+    border-radius: 5px;
+    width: 100%;
+    height: 75vh;
+    position: relative;
+    overflow: hidden;
+    & > div {
+      height: 75vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+    }
+    & > div > img {
+      height: 75vh;
+      width: 100%;
+      object-fit: cover;
+      filter: hue-rotate(90deg) saturate(200%) contrast(150%);
+    }
+    &__div_1 {
+      filter: hue-rotate(90deg) saturate(200%) contrast(150%);
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        z-index: 500;
+      }
+      &::after {
+        top: 0;
+        height: 14px;
+      }
+      &::before {
+        bottom: 0;
+        height: 20px;
+      }
+    }
+    &__div_2 {
+      filter: hue-rotate(180deg) saturate(200%) contrast(150%);
+    }
+    &__div_3 {
+      filter: hue-rotate(270deg) saturate(200%) contrast(150%);
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        z-index: 500;
+      }
+      &::after {
+        top: 0;
+        height: 14px;
+      }
+      &::before {
+        bottom: 0;
+        height: 20px;
+      }
+    }
+  }
+}
+
+.section_1__canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 150;
+  opacity: 0.3;
+  pointer-events: none;
+}
