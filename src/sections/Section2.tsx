@@ -2,7 +2,11 @@ import { useEffect, useRef } from "react";
 // @ts-expect-error importing canvas class
 import FlowFieldEffect from "../utils/sec2_canvas";
 
-export default function Section2() {
+interface Props {
+  painting: HTMLImageElement;
+}
+
+export default function Section2({ painting }: Props) {
   const imgRef_4 = useRef<HTMLImageElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const hueRotateRef = useRef(0);
@@ -96,7 +100,7 @@ export default function Section2() {
     <section ref={targetRef} className="section_2">
       <canvas className="canvas_1 absoluteLargeFullScreen" ref={canvasRef_1} />
       <div className="section_2__child_1">
-        <img ref={imgRef_4} src="/painting-1.jpeg" alt="painting #2" />
+        <img ref={imgRef_4} src={painting.src} alt="painting #2" />
       </div>
       <div ref={titleRef} className="section_2__child_2">
         <h1>Lunar Echo</h1>

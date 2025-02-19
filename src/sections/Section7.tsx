@@ -6,7 +6,11 @@ import Effect2 from "../utils/sec7_canvas_2";
 // @ts-expect-error importing canvas class
 import Effect3 from "../utils/sec7_canvas_3";
 
-export default function Section7() {
+interface Props {
+  painting: HTMLImageElement;
+}
+
+export default function Section7({ painting }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvasRef2 = useRef<HTMLCanvasElement>(null);
   const canvasRef3 = useRef<HTMLCanvasElement>(null);
@@ -17,12 +21,12 @@ export default function Section7() {
   const effectRef3 = useRef<Effect>(null);
   const [resizeToggle, setResizeToggle] = useState(false);
 
-  const painting = new Image();
-  painting.src = "/painting-2.jpeg";
+  const painting_inComponent = new Image();
+  painting_inComponent.src = painting.src;
 
   const [hasImageLoaded, setHasImageLoaded] = useState(false);
 
-  painting.onload = () => {
+  painting_inComponent.onload = () => {
     setHasImageLoaded(true);
   };
 
@@ -41,7 +45,7 @@ export default function Section7() {
         ctx,
         canvas.width,
         canvas.height,
-        painting
+        painting_inComponent
       );
       effectRef.current.animate();
     }
@@ -77,9 +81,9 @@ export default function Section7() {
           effectRef3.current.animate();
         } else {
           sectionDivRef.current!.style.opacity = "0";
-          effectRef.current.stop();
-          effectRef2.current.stop();
-          effectRef3.current.stop();
+          effectRef.current?.stop();
+          effectRef2.current?.stop();
+          effectRef3.current?.stop();
         }
       },
       { threshold: 0.3 }

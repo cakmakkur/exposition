@@ -154,6 +154,7 @@
   object-fit: contain;
   transition: 1.5s;
   transform: translateX(-60vw);
+  box-shadow: 0px 0px 20px 8px rgba(255, 255, 255, 0.24);
 }
 
 .section_2__child_2 {
@@ -173,7 +174,7 @@
 
 .section_3 {
   width: 100%;
-  height: 130vh;
+  height: 100vh;
   background-color: black;
   position: relative;
 }
@@ -408,7 +409,7 @@
   left: 0;
   width: 100%;
   text-align: center;
-  color: white;
+  color: rgb(200, 200, 200);
   z-index: 200;
   font-size: 4rem;
   font-family: "Courier New", Courier, monospace;
@@ -657,6 +658,252 @@
   transition: 0.7s;
 }
 
+.section_9 {
+  height: 130vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10vw;
+  background-color: white;
+  opacity: 0;
+  transition: 1s;
+}
+.section_9 h1 {
+  color: rgb(42, 77, 114);
+  font-size: 4rem;
+  font-weight: 800;
+}
+.section_9::after, .section_9::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  z-index: 150;
+}
+.section_9::after {
+  top: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);
+}
+.section_9::before {
+  bottom: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 0, 0, 0) 0%, rgb(255, 255, 255) 80%);
+}
+
+.section_9__canvas {
+  z-index: 50;
+  pointer-events: none;
+  border: 2px solid rgba(0, 0, 0, 0.669);
+  box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 0.734);
+  border-radius: 5px;
+}
+
+.section_9__canvas_2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130vh;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.5;
+  background-color: rgb(229, 229, 229);
+}
+
+.section_9__anm_switch_btn {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid rgb(172, 144, 90);
+  box-shadow: 0px 0px 10px 3px rgba(172, 144, 90, 0.5);
+  background-color: white;
+  transition: 0.2s;
+}
+.section_9__anm_switch_btn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+.section_9__anm_switch_btn img {
+  width: 50px;
+  height: 50px;
+}
+
+.section_9__right_side {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 5vh;
+}
+
+.section_10 {
+  height: 130vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10vw;
+  background-color: white;
+  transition: 1s;
+}
+.section_10 h1 {
+  color: rgb(42, 77, 114);
+  font-size: 4rem;
+  font-weight: 800;
+}
+.section_10::after, .section_10::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  z-index: 150;
+}
+.section_10::after {
+  top: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);
+}
+.section_10::before {
+  bottom: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 0, 0, 0) 0%, rgb(255, 255, 255) 80%);
+}
+
+.section_10__canvas {
+  z-index: 50;
+  pointer-events: none;
+  border: 2px solid rgba(0, 0, 0, 0.669);
+  box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 0.734);
+  border-radius: 5px;
+}
+
+.section_11 {
+  height: 130vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10vw;
+  background-color: black;
+  transition: 1s;
+}
+.section_11 h1 {
+  color: rgb(42, 77, 114);
+  font-size: 4rem;
+  font-weight: 800;
+}
+.section_11::after, .section_11::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  z-index: 150;
+}
+.section_11::after {
+  top: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);
+}
+.section_11::before {
+  bottom: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 0, 0, 0) 0%, rgb(255, 255, 255) 80%);
+}
+
+.section_11__canvas {
+  z-index: 50;
+  pointer-events: none;
+  border: 2px solid rgba(0, 0, 0, 0.669);
+  box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 0.734);
+  border-radius: 5px;
+}
+
+.section_11__canvas_2 {
+  z-index: 100;
+  pointer-events: none;
+  position: absolute;
+  z-index: 100;
+  width: 95%;
+  height: 95vh;
+  background-color: white;
+  display: none;
+}
+
+.section_11__img {
+  position: absolute;
+  z-index: 100;
+  width: 95%;
+  height: 95vh;
+  filter: contrast(3);
+  opacity: 0.1;
+}
+
+.section_12 {
+  height: 130vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10vw;
+  background-color: black;
+  transition: 1s;
+}
+.section_12 h1 {
+  color: rgb(42, 77, 114);
+  font-size: 4rem;
+  font-weight: 800;
+}
+.section_12::after, .section_12::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  z-index: 150;
+}
+.section_12::after {
+  top: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);
+}
+.section_12::before {
+  bottom: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 0, 0, 0) 0%, rgb(255, 255, 255) 80%);
+}
+
+.section_12__canvas {
+  z-index: 50;
+  pointer-events: none;
+  border: 2px solid rgba(0, 0, 0, 0.669);
+  box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 0.734);
+  border-radius: 5px;
+}
+
+.section_12__img {
+  position: absolute;
+  z-index: 100;
+  width: 95%;
+  height: 95vh;
+  filter: contrast(3);
+  opacity: 0.1;
+}
+
 *,
 *::before,
 *::after {
@@ -743,9 +990,11 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   color: white;
   font-size: 1.5rem;
   pointer-events: none;
+  row-gap: 15px;
 }
 
 .footer {
@@ -777,4 +1026,25 @@ input:focus {
   left: 0;
   width: 100%;
   height: 130vh;
+}
+
+.loadingBar_container {
+  width: 200px;
+  height: 30px;
+  border: 1px solid white;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.loadingProgress {
+  z-index: 80;
+  width: 200px;
+  height: 30px;
+  background-color: rgb(9, 97, 9);
+  transition: 0.2s;
+  transform: translateX(-200px);
+}
+
+.exposition__main_div {
+  min-width: 1180px;
 }

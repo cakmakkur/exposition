@@ -3,7 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import Effect from "../utils/sec8_canvas";
 import Sliderbar from "../components/Sliderbar";
 
-export default function Section8() {
+interface Props {
+  painting_light: HTMLImageElement;
+  painting_dark: HTMLImageElement;
+}
+
+export default function Section8({ painting_light, painting_dark }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const effectRef = useRef<Effect>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -15,7 +20,7 @@ export default function Section8() {
   const [resizeToggle, setResizeToggle] = useState(false);
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const painting = new Image();
-  painting.src = "/painting-11.jpeg";
+  painting.src = painting_light.src;
 
   const [hasImageLoaded, setHasImageLoaded] = useState(false);
 
@@ -105,7 +110,7 @@ export default function Section8() {
     <div ref={divRef} className="section_8">
       <img
         className="sec_8__bg_img"
-        src="/painting-11.jpeg"
+        src={painting_light.src}
         alt="painting #11"
       />
       <h1 ref={titleRef} className="sec_8__titel">
@@ -115,7 +120,7 @@ export default function Section8() {
       <img
         ref={nightImageRef}
         className="sec_8__rep_img"
-        src="/painting-11-night1.jpeg"
+        src={painting_dark.src}
         alt="painting #11"
       />
       <div className="sec_8__switch_box">

@@ -98,7 +98,7 @@ class Effect {
     this.particles = [];
 
     const text = "Die Sängerin";
-    this.ctx.font = "bold 110px Papyrus";
+    this.ctx.font = `bold ${this.width * 0.16}px Papyrus`;
     this.ctx.fillStyle = "black";
     this.ctx.fillText(text, 15, 100);
 

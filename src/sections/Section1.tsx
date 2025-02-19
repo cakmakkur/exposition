@@ -2,7 +2,11 @@ import { useEffect, useRef, useState } from "react";
 // @ts-expect-error importing canvas class
 import Effect from "../utils/sec1_canvas";
 
-export default function Section1() {
+interface Props {
+  painting: HTMLImageElement;
+}
+
+export default function Section1({ painting }: Props) {
   const imgRef_1 = useRef<HTMLImageElement>(null);
   const imgRef_2 = useRef<HTMLImageElement>(null);
   const imgRef_3 = useRef<HTMLImageElement>(null);
@@ -35,7 +39,6 @@ export default function Section1() {
       imgRef_3.current.style.zIndex = "10";
 
       imgRef_1.current.style.zIndex = `${zIndexRef.current++}`;
-      console.log(zIndexRef.current);
 
       let upperX = 0.4;
       let lowerX = 0.2;
@@ -298,21 +301,21 @@ export default function Section1() {
             ref={imgRef_1}
             style={{ clipPath: "url(#clip1)" }}
           >
-            <img src="/painting-7.jpeg" alt="painting #1" />
+            <img src={painting.src} alt="painting #1" />
           </div>
           <div
             className="section_1__child_2__div_2"
             ref={imgRef_2}
             style={{ clipPath: "url(#clip2)" }}
           >
-            <img src="/painting-7.jpeg" alt="painting #1" />
+            <img src={painting.src} alt="painting #1" />
           </div>
           <div
             className="section_1__child_2__div_3"
             ref={imgRef_3}
             style={{ clipPath: "url(#clip3)" }}
           >
-            <img src="/painting-7.jpeg" alt="painting #1" />
+            <img src={painting.src} alt="painting #1" />
           </div>
         </div>
       </section>

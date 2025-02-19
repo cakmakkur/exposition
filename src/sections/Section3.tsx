@@ -1,18 +1,24 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 // @ts-expect-error importing THREE.js assets
 import * as THREE from "three";
 // @ts-expect-error importing THREE.js assets
 import { moon, anchor } from "../assets/sec3_scene_components.js";
-// import { star } from "../assets/star.js";
 // import Clock from "../components/Clock";
 // @ts-expect-error importing canvas class
 import Effect from "../utils/sec3_canvas";
+import NavBar from "../components/NavBar.js";
 
-interface Props {
-  startAnimation: boolean;
-}
+export default function Section3() {
+  const footerRef = useRef<HTMLDivElement>(null);
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
+  const [startAnimation, setStartAnimation] = useState(false);
+  const [startFadeIn, setStartFadeIn] = useState(false);
+  const modalDivRef = useRef<HTMLDivElement>(null);
 
-export default function Section3({ startAnimation }: Props) {
+  const timeoutRef2 = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef3 = useRef<NodeJS.Timeout | null>(null);
+
   const canvasRef_2 = useRef<HTMLCanvasElement>(null);
   const canvasRef_3 = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
@@ -21,6 +27,35 @@ export default function Section3({ startAnimation }: Props) {
   const phaseOffsets = useRef<number[]>([]);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    function handleLoad() {
+      setIsPageLoaded(true);
+    }
+    window.addEventListener("load", handleLoad);
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!modalDivRef.current || !isPageLoaded) return;
+    modalDivRef.current.style.opacity = "0";
+    timeoutRef3.current = setTimeout(() => {
+      setStartAnimation(true);
+      setStartFadeIn(true);
+    }, 300);
+    return () => {
+      if (timeoutRef3.current) clearTimeout(timeoutRef3.current);
+    };
+  }, [isPageLoaded]);
+
+  useEffect(() => {
+    if (!footerRef.current || !startFadeIn) return;
+    timeoutRef2.current = setTimeout(() => {
+      footerRef.current!.style.opacity = "1";
+    }, 2000);
+  }, [startFadeIn]);
 
   useEffect(() => {
     if (!canvasRef_2.current) return;
@@ -125,7 +160,7 @@ export default function Section3({ startAnimation }: Props) {
       window.removeEventListener("resize", handleResize);
       renderer.dispose();
     };
-  }, []);
+  }, [startAnimation]);
 
   useEffect(() => {
     if (!canvasRef_3.current) return;
@@ -168,12 +203,20 @@ export default function Section3({ startAnimation }: Props) {
     };
   }, [startAnimation]);
 
-  // window.addEventListener("scroll", () => {
-  //   console.log(window.scrollY);
-  // });
+  if (!isPageLoaded) {
+    return (
+      <div className="loading_div">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
   return (
     <section className="section_3">
+      <div ref={modalDivRef} className="fade_out_modal_div"></div>
+
+      <NavBar startFadeIn={startFadeIn} />
+
       <canvas
         ref={canvasRef_2}
         className="canvas_2 absoluteFullScreen"
@@ -182,13 +225,18 @@ export default function Section3({ startAnimation }: Props) {
         ref={canvasRef_3}
         className="canvas_3 absoluteFullScreen"
       ></canvas>
-      <button ref={buttonRef} className="start_tour_btn">
-        Start Tour
-      </button>
+      <Link to="/exposition">
+        <button ref={buttonRef} className="start_tour_btn">
+          Start Tour
+        </button>
+      </Link>
 
       <div className="intro_text_box">
         {/* <h1 className="text_mondatelier">Mondatelier</h1>
         <Clock /> */}
+      </div>
+      <div ref={footerRef} className="footer">
+        &copy; Kursat Cakmak
       </div>
     </section>
   );

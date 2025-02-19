@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 // @ts-expect-error importing canvas class
 import { Effect, Symbol } from "../utils/sec4_canvas";
-
-export default function Section4() {
+interface Props {
+  painting: HTMLImageElement;
+}
+export default function Section4({ painting }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const effectRef = useRef<Effect>(null);
   const timerRef = useRef<number>(0);
@@ -118,7 +120,7 @@ export default function Section4() {
         </h1>
       </div>
       <div ref={paintingRef} className="child_4">
-        <img src="/painting-3.jpeg" alt="painting #3" />
+        <img src={painting.src} alt="painting #3" />
       </div>
     </section>
   );

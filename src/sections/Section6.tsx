@@ -2,7 +2,11 @@ import { useEffect, useRef, useState } from "react";
 // @ts-expect-error importing canvas class
 import Effect from "../utils/sec6_canvas";
 
-export default function Section6() {
+interface Props {
+  painting: HTMLImageElement;
+}
+
+export default function Section6({ painting }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const effectRef = useRef<Effect>(null);
   const divRef = useRef<HTMLDivElement>(null);
@@ -12,7 +16,7 @@ export default function Section6() {
   const [shouldAnimate, setShouldAnimate] = useState(false);
 
   const backgroundImg = new Image();
-  backgroundImg.src = "/painting-8.jpeg";
+  backgroundImg.src = painting.src;
 
   backgroundImg.onload = () => {
     setHasImageLoaded(true);
@@ -100,11 +104,7 @@ export default function Section6() {
         Auf der Spur
       </h1>
       <canvas ref={canvasRef} className="section_6__canvas"></canvas>
-      <img
-        className="sec_6__painting"
-        src="/painting-8.jpeg"
-        alt="painting #8"
-      />
+      <img className="sec_6__painting" src={painting.src} alt="painting #8" />
     </div>
   );
 }
